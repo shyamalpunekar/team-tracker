@@ -1,15 +1,14 @@
 {{#partial "content"}}
 
-    <h1>Dictionary Success!</h1>
+    <h1>member name has been saved!</h1>
 
-    Your word has been saved.
     {{#if descriptions}}
         {{#each descriptions }} <!--loop-->
-        <p>{{ description }}  <a href="/definitions/{{id}}">read more...</a> </p> <!--show-->
+        <p>{{ description }}  <a href="/definitions/{{id}}"> </a> </p> <!--show-->
         <p>{{ createdAt }}</p> <!--show-->
         {{/each}}
     {{else}}
-        <p>No words!</p>
+        <p>Name not entered!</p>
 
     {{/if}}
 

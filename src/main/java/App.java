@@ -29,7 +29,7 @@ public class App {
 //        //get: show new post form
         get("/words/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "post-form.hbs");
+            return new ModelAndView(model, "team-form.hbs");
         }, new HandlebarsTemplateEngine());
 
 
@@ -42,14 +42,14 @@ public class App {
             mydef.add(myDefinition);
             model.put("descriptions", mydef);
             model.put("words", Word.getAll());
-            return new ModelAndView(model, "definition-success.hbs");
+            return new ModelAndView(model, "member-details.hbs");
         }, new HandlebarsTemplateEngine());
 
       //  get: show new post form for defintions
         get("/definitions/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("words", Word.getAll());
-           return new ModelAndView(model, "definition-form.hbs");
+           return new ModelAndView(model, "member-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //showing all posts
@@ -77,7 +77,7 @@ public class App {
         Map<String, Object> model = new HashMap<>();
         int idOfBlogToEdit = Integer.parseInt(request.params("id"));
         Word editWord = Word.findById(idOfBlogToEdit);
-        return new ModelAndView(model, "post-form.hbs");
+        return new ModelAndView(model, "team-form.hbs");
         },new HandlebarsTemplateEngine());
 
         //post : process a form to updates in post
@@ -104,7 +104,7 @@ public class App {
             Map<String , Object> model =  new HashMap<String, Object>();
             ArrayList<Definition> descriptions = Definition.getAll();
             model.put("descriptions", descriptions);
-            return new ModelAndView(model, "definition-success.hbs");
+            return new ModelAndView(model, "member-details.hbs");
         }, new HandlebarsTemplateEngine());
 
     }
