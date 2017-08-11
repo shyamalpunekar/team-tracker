@@ -3,6 +3,14 @@
         <h1>Add a Definition!</h1>
 
         <form action="/definitions/new" method="post">
+            <p>
+                <label>Team:</label>
+                <select name="config[mode]">
+                    {{#each words }}
+                        <option value="{{value}}" {{#selected}}selected="selected"{{/selected}}>{{ meaning }}</option>
+                    {{/each}}
+                </select>
+            </p>
             <label for="inputDefinition">Enter Word</label>
             <input id="inputDefinition" name="inputDefinition" type="text">
         <button type="submit" class="btn btn-primary">Submit</button>

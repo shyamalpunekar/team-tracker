@@ -41,12 +41,14 @@ public class App {
             ArrayList<Definition> mydef = new ArrayList<Definition>();
             mydef.add(myDefinition);
             model.put("descriptions", mydef);
+            model.put("words", Word.getAll());
             return new ModelAndView(model, "definition-success.hbs");
         }, new HandlebarsTemplateEngine());
 
       //  get: show new post form for defintions
         get("/definitions/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+            model.put("words", Word.getAll());
            return new ModelAndView(model, "definition-form.hbs");
         }, new HandlebarsTemplateEngine());
 
