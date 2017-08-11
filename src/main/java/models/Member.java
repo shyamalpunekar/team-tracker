@@ -1,20 +1,38 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Created by ssaxe1 on 8/11/17.
+ * Created by spunek on 8/11/17.
  */
 public class Member {
 
     private String mMemberName;
-
-
+    private static List<Member> instances = new ArrayList<Member>();
+    private int mId;
 
     public Member (String name) {
-        this.mMemberName = name;
-
+        mMemberName = name;
+        instances.add(this);
+        mId = instances.size();
     }
 
-    public String getmMemberName() {
+    public String getMemberName() {
         return mMemberName;
+    }
+
+    public static List<Member> all() {
+        return instances;
+    }
+    public static void clear() {
+        instances.clear();
+    }
+
+    public int getId() {
+        return mId;
+    }
+    public static Member find(int id) {
+        return instances.get(id - 1);
     }
 }

@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by ssaxe1 on 8/11/17.
+ * Created by spunek on 8/11/17.
  */
 public class TeamTest {
     @Before
