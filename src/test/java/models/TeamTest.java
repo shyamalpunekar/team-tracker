@@ -26,4 +26,19 @@ public class TeamTest {
         assertEquals("IT Crowd", testTeam.getmTeamname());
     }
 
+    @Test
+    public void all_returnsAllInstancesOfTeam_true() {
+        Team firstTeam = new Team("IT Crowd");
+        Team secondTeam = new Team("The Guild");
+        assertEquals(false, Team.all().contains(firstTeam));
+        assertEquals(false, Team.all().contains(secondTeam));
+    }
+
+    @Test
+    public void clear_emptiesAllTeamsFromList_0() {
+        Team testTeam = new Team("IT Crowd");
+        Team.clear();
+        assertEquals(Team.all().size(), 0);
+    }
+
 }
