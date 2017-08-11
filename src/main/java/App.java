@@ -69,7 +69,7 @@ public class App {
             int idOfBlogToFind = Integer.parseInt(req.params("id")); //pull id - must match route segment
             Word foundBlog = Word.findById(idOfBlogToFind); //use it to find post
             model.put("word", foundBlog); //add it to model for template to display
-            return new ModelAndView(model, "post-detail.hbs"); //individual post page.
+            return new ModelAndView(model, "team-detail.hbs"); //individual post page.
         }, new HandlebarsTemplateEngine());
 
         //get: show a form to update a post
