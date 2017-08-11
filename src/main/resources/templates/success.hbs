@@ -1,0 +1,19 @@
+{{#partial "content"}}
+
+    <h1>Success!</h1>
+
+    Team name has been saved.
+    {{#if words}}
+        {{#each words }} <!--loop-->
+        <p>{{ meaning }}  <a href="/words/{{id}}">read more...</a> </p> <!--show-->
+        <p>{{ createdAt }}</p> <!--show-->
+        {{/each}}
+    {{else}}
+        <p>No words!</p>
+
+    {{/if}}
+
+    <a href="/">Go Back</a>
+{{/partial}}
+
+{{> layout.hbs}}

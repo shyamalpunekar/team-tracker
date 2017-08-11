@@ -1,5 +1,6 @@
 package models;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,48 +8,74 @@ import java.util.List;
  * Created by spunek on 8/11/17.
  */
 public class Team {
-    private String mTeamname;
-    private int mId;
-    private List<Member> mMembers;
+    private String meaning;
 
-    private static List<Team> instances = new ArrayList<Team>();
+    private boolean published;
 
-    public Team (String mTeamname) {
-        this.mTeamname = mTeamname;
-        this.instances.add(this);
-        mId = instances.size();
-        mMembers = new ArrayList<Member>();
+    private LocalDateTime createdAt;
+
+    private int id;
+
+    private static ArrayList<Team> instances = new ArrayList<>();
+
+    public Team(String meaning) {
+        this.meaning = meaning;
+        instances.add(this);
+        this.published = false;
+        this.createdAt = LocalDateTime.now();
+        this.id = instances.size();
     }
 
-    public String getmTeamname() {
-        return mTeamname;
+    public String getMeaning() {
+        return meaning;
     }
 
-    public static List<Team> getInstances() {
+    public int getId() {
+        return id;
+    }
+
+    //Displaying Custom Objects
+    public static ArrayList<Team> getAll(){
         return instances;
     }
 
-    public static List<Team> all() {
-        return instances;
-    }
-
-    public static void clear() {
+    public static void clearAllBlogs() {
         instances.clear();
     }
 
-    public int getmId() {
-        return mId;
+    public boolean getPublished() {
+        return published;
     }
 
-    public static Team find(int id) {
-        return instances.get(id - 1);
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public List<Member> getMembers() {
-        return mMembers;
+    public static Team findById(int id) {
+        return instances.get(id -1);
+    }
+
+    public void update(String newValue) {
+        this.meaning = newValue;
+    }
+
+    public void deleteBlog(){
+        instances.remove(id-1); //same reason
     }
 
     public void addMember(Member member) {
-        mMembers.add(member);
+       instances.add(this);
     }
-}
+
+
+
+    }
+
+
+
+
+
+
+
+//
+//

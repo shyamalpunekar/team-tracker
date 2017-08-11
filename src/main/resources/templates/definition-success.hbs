@@ -1,0 +1,19 @@
+{{#partial "content"}}
+
+    <h1>Dictionary Success!</h1>
+
+    Your word has been saved.
+    {{#if descriptions}}
+        {{#each descriptions }} <!--loop-->
+        <p>{{ description }}  <a href="/words/{{id}}">read more...</a> </p> <!--show-->
+        <p>{{ createdAt }}</p> <!--show-->
+        {{/each}}
+    {{else}}
+        <p>No words!</p>
+
+    {{/if}}
+
+    <a href="/">Go Back</a>
+{{/partial}}
+
+{{> layout.hbs}}

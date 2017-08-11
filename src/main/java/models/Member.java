@@ -22,7 +22,7 @@ public class Member {
         return mMemberName;
     }
 
-    public static List<Member> all() {
+    public static List<Member> getAll() {
         return instances;
     }
     public static void clear() {
