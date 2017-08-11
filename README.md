@@ -1,6 +1,6 @@
 # Team Tracker
 
-#### _A Team Tracker Web Application for Epicodus Java Week 2 Independent Project, July 7, 2017_
+#### _A Team Tracker Web Application for Epicodus Java Week 2 Independent Project, Aug 11, 2017_
 
 #### By _**Shyamal Punekar**_
 

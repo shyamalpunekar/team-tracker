@@ -60,7 +60,6 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-
         //get: show individual post
         get("/words/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
