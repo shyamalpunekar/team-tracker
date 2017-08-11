@@ -1,0 +1,12 @@
+{{#partial "content"}}
+
+        <h1>Add a Definition!</h1>
+
+        <form action="/definitions/new" method="post">
+            <label for="inputDefinition">Enter Word</label>
+            <input id="inputDefinition" name="inputDefinition" type="text">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{{/partial}}
+
+{{> layout.hbs}}

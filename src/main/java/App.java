@@ -1,62 +1,61 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-
-import models.Member;
+import models.Definition;
 import models.Team;
+import models.Word;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import static spark.Spark.*;
 
-/**
- * Created by spunek on 8/11/17.
- */
 public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
 
-        //get : render home page
-        get("/", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
-            return new ModelAndView(model, "index.hbs");
-        }, new HandlebarsTemplateEngine());
 
-        //Creating Objects with a POST Request
+//        //Creating Objects with a POST Request
         post("/words/new" , (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             String bananas = request.queryParams("inputMeaning");
-            Team newTeam = new Team(bananas);
-            ArrayList<Team> myTeams = Team.getAll();
-            model.put("Teams", myTeams);
+            Word newWord = new Word(bananas);
+            ArrayList<Word> currentWords = new ArrayList<Word>();
+            currentWords.add(newWord);
+            model.put("words", currentWords);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
-        //get: show new post form for defintions
-        get("/definitions/new", (req, res) -> {
+//        //get: show new post form
+        get("/words/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            int foundMember = Integer.parseInt(req.params("id")) ;
-            Member found= Member.find(foundMember);
-            model.put("member", found);
-            return new ModelAndView(model, "member-form.hbs");
+            return new ModelAndView(model, "post-form.hbs");
         }, new HandlebarsTemplateEngine());
+
 
         //Creating Objects with a POST Request
         post("/definitions/new" , (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            String bananas = request.queryParams("inputMember");
-            Member myMember = new Member(bananas);
-            List<Member> mydef = Member.getAll();
+            String bananas = request.queryParams("inputDefinition");
+            Definition myDefinition = new Definition(bananas);
+            ArrayList<Definition> mydef = new ArrayList<Definition>();
+            mydef.add(myDefinition);
             model.put("descriptions", mydef);
-            return new ModelAndView(model, "member-success.hbs");
+            return new ModelAndView(model, "definition-success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+      //  get: show new post form for defintions
+        get("/definitions/new", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+           return new ModelAndView(model, "definition-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //showing all posts
         get("/" , (request, response) -> {
             Map<String , Object> model =  new HashMap<String, Object>();
-            ArrayList<Team> Teams = Team.getAll();
-            model.put("Teams", Teams);
-            List<Member> mydef = Member.getAll();
+            ArrayList<Word> words = Word.getAll();
+            model.put("words", words);
+            ArrayList<Definition> mydef = Definition.getAll();
             model.put("descriptions", mydef);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
@@ -65,18 +64,18 @@ public class App {
         //get: show individual post
         get("/words/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            int idOfBlogToFind = Integer.parseInt(req.params("inputMeaning")); //pull id - must match route segment
-            Team foundBlog = Team.findById(idOfBlogToFind); //use it to find post
+            int idOfBlogToFind = Integer.parseInt(req.params("id")); //pull id - must match route segment
+            Word foundBlog = Word.findById(idOfBlogToFind); //use it to find post
             model.put("word", foundBlog); //add it to model for template to display
             return new ModelAndView(model, "post-detail.hbs"); //individual post page.
         }, new HandlebarsTemplateEngine());
 
         //get: show a form to update a post
         get("/words/:id/update" , (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            int idOfBlogToEdit = Integer.parseInt(request.params("id"));
-            Team editTeam = Team.findById(idOfBlogToEdit);
-            return new ModelAndView(model, "post-form.hbs");
+        Map<String, Object> model = new HashMap<>();
+        int idOfBlogToEdit = Integer.parseInt(request.params("id"));
+        Word editWord = Word.findById(idOfBlogToEdit);
+        return new ModelAndView(model, "post-form.hbs");
         },new HandlebarsTemplateEngine());
 
         //post : process a form to updates in post
@@ -84,20 +83,27 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             String newMeaning = request.queryParams("inputMeaning");
             int idOfBlogToEdit = Integer.parseInt(request.params("id"));
-            Team editTeam = Team.findById(idOfBlogToEdit);
-            editTeam.update(newMeaning);
+            Word editWord = Word.findById(idOfBlogToEdit);
+            editWord.update(newMeaning);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
         //showing all posts
         get("/words" , (request, response) -> {
             Map<String , Object> model =  new HashMap<String, Object>();
-            ArrayList<Team> Teams = Team.getAll();
-            model.put("words", Teams);
+            ArrayList<Word> words = Word.getAll();
+            model.put("words", words);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
 
+        //showing all posts
+        get("/definitions" , (request, response) -> {
+            Map<String , Object> model =  new HashMap<String, Object>();
+            ArrayList<Definition> descriptions = Definition.getAll();
+            model.put("descriptions", descriptions);
+            return new ModelAndView(model, "definition-success.hbs");
+        }, new HandlebarsTemplateEngine());
 
     }
 }

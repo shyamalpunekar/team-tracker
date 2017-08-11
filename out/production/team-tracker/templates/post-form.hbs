@@ -1,0 +1,21 @@
+{{#partial "content"}}
+
+    {{#if words}}
+        <h1>Add Member!</h1>
+        <form action="/words/{{word.id}}/update" method="post">
+            <label for="inputMeaning">Add Member</label>
+            <input id="inputMeaning" name="inputMeaning" type="text">
+        </form>
+    {{else}}
+
+        <h1>Add a new Team!</h1>
+
+        <form action="/words/new" method="post">
+            <label for="inputMeaning">Enter Team Name</label>
+            <input id="inputMeaning" name="inputMeaning" type="text">
+    {{/if}}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{{/partial}}
+
+{{> layout.hbs}}

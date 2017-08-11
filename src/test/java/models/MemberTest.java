@@ -29,15 +29,15 @@ public class MemberTest {
     public void all_returnsAllInstancesofMember_true() {
         Member firstMember = new Member("Moss");
         Member secondMember = new Member("Roy");
-        assertEquals(true, Member.all().contains(firstMember));
-        assertEquals(true, Member.all().contains(secondMember));
+        assertEquals(true, Member.getAll().contains(firstMember));
+        assertEquals(true, Member.getAll().contains(secondMember));
     }
 
     @Test
     public void clear_removesAllMembersFromArrayList_0() {
         Member newMember = new Member("Moss");
         Member.clear();
-        assertEquals(0, Member.all().size());
+        assertEquals(0, Member.getAll().size());
     }
 
     @Test
