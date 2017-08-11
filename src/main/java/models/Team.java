@@ -2,7 +2,6 @@ package models;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by spunek on 8/11/17.
@@ -63,7 +62,7 @@ public class Team {
         instances.remove(id-1); //same reason
     }
 
-    public void addMember(Member member) {
+    public void addMember(TestMember testMember) {
        instances.add(this);
     }
 

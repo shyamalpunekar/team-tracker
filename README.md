@@ -15,7 +15,7 @@ This is a program that allows a Startup Weekend organizer or hack-a-thon coordin
   * _Example Output: "Registration Confirmed. Your new team has been added."_
 * It allows the user to add new members to an existing team.
   * _Example Input: Member Name: Kate_
-  * _Example Output: Registration Confirmed. New member has been added to team IT Crowd_
+  * _Example Output: Registration Confirmed. New testMember has been added to team IT Crowd_
 
   ## What's Included
 
@@ -35,14 +35,14 @@ team-tracker
      │             └── templates
      │                     ├── index.hbs
      │                     ├── layout.hbs
-     │                     ├── members.hbs
+     │                     ├── testMember-details.hbs
      │                     ├── success.hbs
+     │                     ├── testMember-form.hbs
+     │                     ├── testMember-success.hbs
+     │                     ├── success.hbs
+     │                     ├── team-detail.hbs
      │                     ├── team-form.hbs
-     │                     ├── team-members-form.hbs
-     │                     ├── team-members-success.hbs
-     │                     ├── team-success.hbs
-     │                     ├── team.hbs
-     │                     └── teams.hbs
+     │                     └── team-testMember.hbs
      └── test
            └── java
                  ├── MemberTest.java

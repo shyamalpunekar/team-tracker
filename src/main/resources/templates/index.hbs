@@ -5,18 +5,16 @@
     {{#if words}}
         <p><img src="/images/smile.jpeg" width="20%"></p>
         {{#each words }} <!--loop-->
-        <p>{{ meaning }}  <a href="/word/{{id}}">You have entered a Team Name</a> </p> <!--show-->
+        <p>{{ meaning }}  <a href="/word/{{id}}"></a> </p> <!--show-->
         {{/each}}
     {{else}}
-        <p>Team name have not been entered yet!</p>
+        <p>Please Add team names and member names by choosing above options!</p>
     {{/if}}
-
-    <p>Add a new Team</p>
 
     {{#if definitions}}
         <p><img src="/images/smile.jpeg" width="20%"></p>
         {{#each definitions }} <!--loop-->
-        <p>{{ description }}  <a href="/definition/{{id}}">You have entered a Member Name</a> </p> <!--show-->
+        <p>{{ description }}  <a href="/definition/{{id}}"></a> </p> <!--show-->
         <p>{{ createdAt }}</p> <!--show-->
         {{/each}}
     {{else}}

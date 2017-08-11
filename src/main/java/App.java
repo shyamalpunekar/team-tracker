@@ -1,6 +1,5 @@
 import models.Definition;
 import models.Team;
-import models.Word;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -14,13 +13,12 @@ public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
 
-
-//        //Creating Objects with a POST Request
+       //Creating Objects with a POST Request
         post("/words/new" , (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             String bananas = request.queryParams("inputMeaning");
-            Word newWord = new Word(bananas);
-            ArrayList<Word> currentWords = new ArrayList<Word>();
+            Team newWord = new Team(bananas);
+            ArrayList<Team> currentWords = new ArrayList<Team>();
             currentWords.add(newWord);
             model.put("words", currentWords);
             return new ModelAndView(model, "success.hbs");
@@ -41,21 +39,21 @@ public class App {
             ArrayList<Definition> mydef = new ArrayList<Definition>();
             mydef.add(myDefinition);
             model.put("descriptions", mydef);
-            model.put("words", Word.getAll());
+            model.put("words", Team.getAll());
             return new ModelAndView(model, "member-details.hbs");
         }, new HandlebarsTemplateEngine());
 
       //  get: show new post form for defintions
         get("/definitions/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            model.put("words", Word.getAll());
+            model.put("words", Team.getAll());
            return new ModelAndView(model, "member-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //showing all posts
         get("/" , (request, response) -> {
             Map<String , Object> model =  new HashMap<String, Object>();
-            ArrayList<Word> words = Word.getAll();
+            ArrayList<Team> words = Team.getAll();
             model.put("words", words);
             ArrayList<Definition> mydef = Definition.getAll();
             model.put("descriptions", mydef);
@@ -67,7 +65,7 @@ public class App {
         get("/words/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfBlogToFind = Integer.parseInt(req.params("id")); //pull id - must match route segment
-            Word foundBlog = Word.findById(idOfBlogToFind); //use it to find post
+            Team foundBlog = Team.findById(idOfBlogToFind); //use it to find post
             model.put("word", foundBlog); //add it to model for template to display
             return new ModelAndView(model, "team-detail.hbs"); //individual post page.
         }, new HandlebarsTemplateEngine());
@@ -76,7 +74,7 @@ public class App {
         get("/words/:id/update" , (request, response) -> {
         Map<String, Object> model = new HashMap<>();
         int idOfBlogToEdit = Integer.parseInt(request.params("id"));
-        Word editWord = Word.findById(idOfBlogToEdit);
+        Team editWord = Team.findById(idOfBlogToEdit);
         return new ModelAndView(model, "team-form.hbs");
         },new HandlebarsTemplateEngine());
 
@@ -85,7 +83,7 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             String newMeaning = request.queryParams("inputMeaning");
             int idOfBlogToEdit = Integer.parseInt(request.params("id"));
-            Word editWord = Word.findById(idOfBlogToEdit);
+            Team editWord = Team.findById(idOfBlogToEdit);
             editWord.update(newMeaning);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
@@ -93,7 +91,7 @@ public class App {
         //showing all posts
         get("/words" , (request, response) -> {
             Map<String , Object> model =  new HashMap<String, Object>();
-            ArrayList<Word> words = Word.getAll();
+            ArrayList<Team> words = Team.getAll();
             model.put("words", words);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());

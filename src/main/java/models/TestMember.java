@@ -6,13 +6,13 @@ import java.util.List;
 /**
  * Created by spunek on 8/11/17.
  */
-public class Member {
+public class TestMember {
 
     private String mMemberName;
-    private static List<Member> instances = new ArrayList<Member>();
+    private static List<TestMember> instances = new ArrayList<TestMember>();
     private int mId;
 
-    public Member (String name) {
+    public TestMember(String name) {
         mMemberName = name;
         instances.add(this);
         mId = instances.size();
@@ -22,7 +22,7 @@ public class Member {
         return mMemberName;
     }
 
-    public static List<Member> getAll() {
+    public static List<TestMember> getAll() {
         return instances;
     }
     public static void clear() {
@@ -32,7 +32,7 @@ public class Member {
     public int getId() {
         return mId;
     }
-    public static Member find(int id) {
+    public static TestMember find(int id) {
         return instances.get(id - 1);
     }
 }

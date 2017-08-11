@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Created by Guest on 8/10/17.
  */
-public class Word {
+public class TeamOne {
 
     private String meaning;
 
@@ -17,9 +17,9 @@ public class Word {
 
     private int id;
 
-    private static ArrayList<Word> instances = new ArrayList<>();
+    private static ArrayList<TeamOne> instances = new ArrayList<>();
 
-    public Word(String meaning) {
+    public TeamOne(String meaning) {
         this.meaning = meaning;
         instances.add(this);
         this.published = false;
@@ -36,7 +36,7 @@ public class Word {
     }
 
     //Displaying Custom Objects
-    public static ArrayList<Word> getAll(){
+    public static ArrayList<TeamOne> getAll(){
         return instances;
     }
 
@@ -52,7 +52,7 @@ public class Word {
         return createdAt;
     }
 
-    public static Word findById(int id) {
+    public static TeamOne findById(int id) {
         return instances.get(id -1);
     }
 

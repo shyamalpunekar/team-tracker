@@ -2,15 +2,18 @@
 
     <h1>Success!</h1>
 
-    Team name has been saved.
+    <h3>Registration Confirmed. Your new team has been added.</h3>
 
     {{#if words}}
         {{#each words }} <!--loop-->
-        <p>{{ meaning }}  <a href="/words/{{id}}">read more...</a> </p> <!--show-->
-        <p>{{ createdAt }}</p> <!--show-->
+        <ul>
+            <li>{{ meaning }}  <a href="/words/{{id}}">read more...</a> </li> <!--show-->
+            <li>{{ createdAt }}</li> <!--show-->
+        </ul>
+
         {{/each}}
     {{else}}
-        <p>No words!</p>
+        <p></p>
 
     {{/if}}
 

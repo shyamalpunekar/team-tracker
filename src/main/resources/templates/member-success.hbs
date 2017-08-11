@@ -1,10 +1,10 @@
 {{#partial "content"}}
 
-    <h1>member name has been saved!</h1>
+    <h1>Registration Confirmed. New member has been added to team IT {{descriptions}}!</h1>
 
     {{#if descriptions}}
         {{#each descriptions }} <!--loop-->
-        <p>{{ description }}  <a href="/definitions/{{id}}"> </a> </p> <!--show-->
+        <p>{{ descriptions }}  <a href="/definitions/{{id}}"> </a> </p> <!--show-->
         <p>{{ createdAt }}</p> <!--show-->
         {{/each}}
     {{else}}
