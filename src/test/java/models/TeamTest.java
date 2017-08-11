@@ -20,4 +20,10 @@ public class TeamTest {
         assertEquals(true, testTeam instanceof Team);
     }
 
+    @Test
+    public void getTeamName_teamInstantiatesWithName_ITCrowd() {
+        Team testTeam = new Team("IT Crowd");
+        assertEquals("IT Crowd", testTeam.getmTeamname());
+    }
+
 }

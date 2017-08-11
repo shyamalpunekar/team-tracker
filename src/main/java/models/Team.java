@@ -4,13 +4,13 @@ package models;
  * Created by ssaxe1 on 8/11/17.
  */
 public class Team {
-    private String name;
+    private String mTeamname;
 
-    public Team (String name) {
-        this.name =name;
+    public Team (String mTeamname) {
+        this.mTeamname = mTeamname;
     }
 
-    public String getName() {
-        return name;
+    public String getmTeamname() {
+        return mTeamname;
     }
 }
