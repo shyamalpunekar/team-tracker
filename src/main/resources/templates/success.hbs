@@ -7,8 +7,8 @@
     {{#if teams}}
         {{#each teams }} <!--loop-->
         <ul>
-            <li>{{ meaning }}  <a href="/teams/{{id}}">read more...</a> </li> <!--show-->
-            <li>{{ createdAt }}</li> <!--show-->
+            <li>Team Name: <b>{{ teamName }}  </b> <a href="/teams/{{id}}">read more...</a> </li> <!--show-->
+            <li>Created At: {{ createdAt }}</li> <!--show-->
         </ul>
 
         {{/each}}

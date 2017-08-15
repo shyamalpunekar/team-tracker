@@ -17,7 +17,7 @@ public class App {
        //Creating Objects with a POST Request
         post("/teams/new" , (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            String bananas = request.queryParams("inputMeaning");
+            String bananas = request.queryParams("inputTeamName");
             Team newTeam = new Team(bananas);
             ArrayList<Team> currentTeams = new ArrayList<Team>();
             currentTeams.add(newTeam);
@@ -36,27 +36,27 @@ public class App {
         post("/members/new" , (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             String memberName = request.queryParams("inputMember");
-            String meaning = request.queryParams("meaning");
+            String teamName = request.queryParams("teamName");
             Member member = new Member(memberName);
             ArrayList<Member> memberArrayList = new ArrayList<Member>();
             memberArrayList.add(member);
             Map<String, List<String>> teamMembers = Member.getTeamMembers();
 
-            if(teamMembers.get(meaning) != null ) {
+            if(teamMembers.get(teamName) != null ) {
 
-                List<String> members = teamMembers.get(meaning);
+                List<String> members = teamMembers.get(teamName);
                 members.add(memberName);
             }
             else {
                 List<String> members = new ArrayList<String>();
                 members.add(memberName);
-                teamMembers.put(meaning, members);
+                teamMembers.put(teamName, members);
             }
             model.put("descriptions", memberArrayList);
             model.put("teams", Team.getAll());
-            model.put("teamMembers", teamMembers.get(meaning));
+            model.put("teamMembers", teamMembers.get(teamName));
 
-            model.put("meaning", meaning);
+            model.put("teamName", teamName);
             return new ModelAndView(model, "member-success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -90,17 +90,16 @@ public class App {
         get("/teams/:id/update" , (request, response) -> {
         Map<String, Object> model = new HashMap<>();
         int idOfBlogToEdit = Integer.parseInt(request.params("id"));
-        Team editTeam = Team.findById(idOfBlogToEdit);
         return new ModelAndView(model, "team-form.hbs");
         },new HandlebarsTemplateEngine());
 
         //post : process a form to updates in post
         post("/teams: id/update" , (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            String newMeaning = request.queryParams("inputMeaning");
+            String newTeamName = request.queryParams("inputTeamName");
             int idOfBlogToEdit = Integer.parseInt(request.params("id"));
             Team editTeam = Team.findById(idOfBlogToEdit);
-            editTeam.update(newMeaning);
+            editTeam.update(newTeamName);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -126,11 +125,31 @@ public class App {
         //get: show a form to update a post
         get("/members/:id/update" , (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            int idOfBlogToEdit = Integer.parseInt(request.params("id"));
-            Team editTeam = Team.findById(idOfBlogToEdit);
+            int memberId = Integer.parseInt(request.params("id"));
+            model.put("teams", Team.getAll());
             return new ModelAndView(model, "member-form.hbs");
         },new HandlebarsTemplateEngine());
 
+        //get: show a form to update a post
+        post("/members/:id/update" , (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String newTeamName = request.queryParams("inputMember");
+            int idOfBlogToEdit = Integer.parseInt(request.params("id"));
+            Member member = Member.findById(idOfBlogToEdit);
+            member.update(newTeamName);
+
+            return new ModelAndView(model, "member-success.hbs");
+        },new HandlebarsTemplateEngine());
+
+
+        //get: show individual post
+        get("/members/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfBlogToFind = Integer.parseInt(req.params("id")); //pull id - must match route segment
+            Member foundBlog = Member.findById(idOfBlogToFind); //use it to find post
+            model.put("member", foundBlog); //add it to model for template to display
+            return new ModelAndView(model, "member-details.hbs"); //individual post page.
+        }, new HandlebarsTemplateEngine());
 
 
     }

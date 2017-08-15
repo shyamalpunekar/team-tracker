@@ -51,7 +51,7 @@ public class Member {
         return id;
     }
 
-    public static Member find(int id) {
+    public static Member findById(int id) {
             return instances.get(id - 1);
     }
     public LocalDateTime getCreatedAt() {
@@ -61,6 +61,10 @@ public class Member {
     //Displaying Custom Objects
     public static Map<String, List<String>> getTeamMembers(){
         return teamMembers;
+    }
+
+    public void update(String newValue) {
+        this.memberName = newValue;
     }
 
 }

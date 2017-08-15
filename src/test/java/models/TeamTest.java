@@ -26,7 +26,7 @@ public class TeamTest {
     @Test
     public void getTeamName_teamInstantiatesWithName_ITCrowd() {
         Team testTestTeam = new Team("IT Crowd");
-        assertEquals("IT Crowd", testTestTeam.getMeaning());
+        assertEquals("IT Crowd", testTestTeam.getTeamName());
     }
 
     @Test
@@ -63,7 +63,7 @@ public class TeamTest {
     public void getMembers_initiallyReturnsEmptyList_ArrayList() {
         Team.clearAllBlogs();
         Team testTestTeam = new Team("IT Crowd");
-        //assertEquals(0, testTestTeam.getMeaning().size());
+        //assertEquals(0, testTestTeam.getTeamName().size());
     }
 
     @Test

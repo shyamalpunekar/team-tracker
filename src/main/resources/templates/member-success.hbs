@@ -4,14 +4,12 @@
 
 
         {{#each descriptions }} <!--loop-->
-        <p>{{ memberName }}  <a href="/members/{{id}}"> </a> </p> <!--show-->
-        <p>{{ createdAt }}</p> <!--show-->
+        <h3><p>Team Name : {{ teamName }}</p></h3>
+        <p> Member Name: {{ memberName }}  <a href="/members/{{id}}"> read more... </a> </p> <!--show-->
+        <p> Created At: {{ createdAt }}</p> <!--show-->
         {{/each}}
-    <p>{{ meaning }}</p>
-    {{#each teamMembers }} <!--loop-->
-    <p>{{this}}  <a href="/members/{{id}}"> </a> </p> <!--show-->
 
-    {{/each}}
+
 
 
 

@@ -7,9 +7,9 @@
         <form action="/members/new" method="post">
             <p>
                 <label>Team:</label>
-                <select name="meaning">
+                <select name="teamName">
                     {{#each teams }}
-                        <option value="{{meaning}}" {{#selected}}selected="selected"{{/selected}}>{{ meaning }}</option>
+                        <option value="{{teamName}}" {{#selected}}selected="selected"{{/selected}}>{{ teamName }}</option>
                     {{/each}}
                 </select>
             </p>

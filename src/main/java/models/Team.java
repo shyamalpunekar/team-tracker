@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by spunek on 8/11/17.
  */
 public class Team {
-    private String meaning;
+    private String teamName;
 
     private boolean published;
 
@@ -23,16 +23,16 @@ public class Team {
 
 
 
-    public Team(String meaning) {
-        this.meaning = meaning;
+    public Team(String teamName) {
+        this.teamName = teamName;
         instances.add(this);
         this.published = false;
         this.createdAt = LocalDateTime.now();
         this.id = instances.size();
     }
 
-    public String getMeaning() {
-        return meaning;
+    public String getTeamName() {
+        return teamName;
     }
 
     public int getId() {
@@ -63,7 +63,7 @@ public class Team {
     }
 
     public void update(String newValue) {
-        this.meaning = newValue;
+        this.teamName = newValue;
     }
 
     public void deleteBlog(){

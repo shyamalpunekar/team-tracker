@@ -3,16 +3,16 @@
     {{#if teams}}
         <h1>Add Member!</h1>
         <form action="/teams/{{team.id}}/update" method="post">
-            <label for="inputMeaning">Add Member</label>
-            <input id="inputMeaning" name="inputMeaning" type="text">
+            <label for="inputTeamName">Add Member</label>
+            <input id="inputTeamName" name="inputTeamName" type="text">
         </form>
     {{else}}
 
         <h1>Add a new Team!</h1>
 
         <form action="/teams/new" method="post">
-            <label for="inputMeaning">Enter Team Name</label>
-            <input id="inputMeaning" name="inputMeaning" type="text">
+            <label for="inputTeamName">Enter Team Name</label>
+            <input id="inputTeamName" name="inputTeamName" type="text">
     {{/if}}
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
