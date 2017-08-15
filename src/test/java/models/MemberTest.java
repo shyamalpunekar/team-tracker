@@ -51,7 +51,7 @@ import static org.junit.Assert.*;
         public void find_returnsMemberWithSameId_secondMember() {
             Member firstTestMember = new Member("Moss");
             Member secondTestMember = new Member("Roy");
-            assertEquals(Member.find(secondTestMember.getId()), secondTestMember);
+            assertEquals(Member.findById(secondTestMember.getId()), secondTestMember);
         }
 
     }

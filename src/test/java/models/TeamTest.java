@@ -33,8 +33,8 @@ public class TeamTest {
     public void all_returnsAllInstancesOfTeam_true() {
         Team firstTestTeam = new Team("IT Crowd");
         Team secondTestTeam = new Team("The Guild");
-        assertEquals(false, Team.getAll().contains(firstTestTeam));
-        assertEquals(false, Team.getAll().contains(secondTestTeam));
+        assertEquals(true, Team.getAll().contains(firstTestTeam));
+        assertEquals(true, Team.getAll().contains(secondTestTeam));
     }
 
     @Test
