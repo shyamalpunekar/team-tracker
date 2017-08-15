@@ -4,10 +4,10 @@
 
     <h3>Registration Confirmed. Your new team has been added.</h3>
 
-    {{#if words}}
-        {{#each words }} <!--loop-->
+    {{#if teams}}
+        {{#each teams }} <!--loop-->
         <ul>
-            <li>{{ meaning }}  <a href="/words/{{id}}">read more...</a> </li> <!--show-->
+            <li>{{ meaning }}  <a href="/teams/{{id}}">read more...</a> </li> <!--show-->
             <li>{{ createdAt }}</li> <!--show-->
         </ul>
 

@@ -2,19 +2,19 @@
 
     <h1>Team Tracker!</h1>
 
-    {{#if words}}
+    {{#if teams}}
         <p><img src="/images/smile.jpeg" width="20%"></p>
-        {{#each words }} <!--loop-->
-        <p>{{ meaning }}  <a href="/word/{{id}}"></a> </p> <!--show-->
+        {{#each teams }} <!--loop-->
+        <p>{{ meaning }}  <a href="/team/{{id}}"></a> </p> <!--show-->
         {{/each}}
     {{else}}
         <p>Please Add team names and member names by choosing above options!</p>
     {{/if}}
 
-    {{#if definitions}}
+    {{#if members}}
         <p><img src="/images/smile.jpeg" width="20%"></p>
-        {{#each definitions }} <!--loop-->
-        <p>{{ description }}  <a href="/definition/{{id}}"></a> </p> <!--show-->
+        {{#each members }} <!--loop-->
+        <p>{{ description }}  <a href="/member/{{id}}"></a> </p> <!--show-->
         <p>{{ createdAt }}</p> <!--show-->
         {{/each}}
     {{else}}

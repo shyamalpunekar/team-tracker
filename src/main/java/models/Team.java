@@ -2,6 +2,9 @@ package models;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by spunek on 8/11/17.
@@ -16,6 +19,9 @@ public class Team {
     private int id;
 
     private static ArrayList<Team> instances = new ArrayList<>();
+
+
+
 
     public Team(String meaning) {
         this.meaning = meaning;
@@ -37,6 +43,8 @@ public class Team {
     public static ArrayList<Team> getAll(){
         return instances;
     }
+
+
 
     public static void clearAllBlogs() {
         instances.clear();
@@ -62,7 +70,7 @@ public class Team {
         instances.remove(id-1); //same reason
     }
 
-    public void addMember(TestMember testMember) {
+    public void addMember(Member member) {
        instances.add(this);
     }
 

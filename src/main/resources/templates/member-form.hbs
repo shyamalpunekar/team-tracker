@@ -1,20 +1,24 @@
+
 {{#partial "content"}}
+
 
         <h1>Add a Member!</h1>
 
-        <form action="/definitions/new" method="post">
+        <form action="/members/new" method="post">
             <p>
                 <label>Team:</label>
-                <select name="config[mode]">
-                    {{#each words }}
-                        <option value="{{value}}" {{#selected}}selected="selected"{{/selected}}>{{ meaning }}</option>
+                <select name="meaning">
+                    {{#each teams }}
+                        <option value="{{meaning}}" {{#selected}}selected="selected"{{/selected}}>{{ meaning }}</option>
                     {{/each}}
                 </select>
             </p>
-            <label for="inputDefinition">Enter Member Name</label>
-            <input id="inputDefinition" name="inputDefinition" type="text">
+            <label for="inputMember">Enter Member Name</label>
+            <input id="inputMember" name="inputMember" type="text">
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 {{/partial}}
+
+
 
 {{> layout.hbs}}

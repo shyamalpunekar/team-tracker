@@ -1,8 +1,8 @@
 {{#partial "content"}}
 
-    {{#if words}}
+    {{#if teams}}
         <h1>Add Member!</h1>
-        <form action="/words/{{word.id}}/update" method="post">
+        <form action="/teams/{{team.id}}/update" method="post">
             <label for="inputMeaning">Add Member</label>
             <input id="inputMeaning" name="inputMeaning" type="text">
         </form>
@@ -10,7 +10,7 @@
 
         <h1>Add a new Team!</h1>
 
-        <form action="/words/new" method="post">
+        <form action="/teams/new" method="post">
             <label for="inputMeaning">Enter Team Name</label>
             <input id="inputMeaning" name="inputMeaning" type="text">
     {{/if}}

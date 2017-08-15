@@ -1,0 +1,14 @@
+{{#partial "content"}}
+
+    <h1>Registration Confirmed. New member has been added to team!</h1>
+
+
+    {{#each allTeamMembers}}
+        <p>  <h4> Team Name: {{@key}} </h4> Members: {{this}} </p>
+    {{/each}}
+
+
+    <a href="/">Go Back</a>
+{{/partial}}
+
+{{> layout.hbs}}
