@@ -49,32 +49,16 @@ public class App {
            return new ModelAndView(model, "member-form.hbs");
         }, new HandlebarsTemplateEngine());
 
-
-
-//       //Creating Objects with a POST Request
-//        post("/teams/new" , (request, response) -> {
-//            Map<String, Object> model = new HashMap<String, Object>();
-//            String bananas = request.queryParams("inputTeamName");
-//            Team newTeam = new Team(bananas);
-//            ArrayList<Team> currentTeams = new ArrayList<Team>();
-//            currentTeams.add(newTeam);
-//            model.put("teams", currentTeams);
-//            return new ModelAndView(model, "success.hbs");
-//        }, new HandlebarsTemplateEngine());
-//
-////        //get: show new post form
-//        get("/teams/new", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            return new ModelAndView(model, "team-form.hbs");
-//        }, new HandlebarsTemplateEngine());
-//
-//
-//        //Creating Objects with a POST Request
+        //Process a new Form {needs re-work}
 //        post("/members/new" , (request, response) -> {
 //            Map<String, Object> model = new HashMap<String, Object>();
+//            List<Team> allTeams = teamDao.getAll();
+//            model.put("teams" ,allTeams);
+//
 //            String memberName = request.queryParams("inputMember");
 //            String teamName = request.queryParams("teamName");
-//            Member member = new Member(memberName);
+//            int memberId = Integer.parseInt(request.queryParams("memberID"));
+//            Member member = new Member(memberName, memberId);
 //            ArrayList<Member> memberArrayList = new ArrayList<Member>();
 //            memberArrayList.add(member);
 //            Map<String, List<String>> teamMembers = Member.getTeamMembers();
@@ -97,6 +81,43 @@ public class App {
 //            return new ModelAndView(model, "member-success.hbs");
 //        }, new HandlebarsTemplateEngine());
 //
+
+//       //Creating Objects with a POST Request
+//        post("/teams/new" , (request, response) -> {
+//            Map<String, Object> model = new HashMap<String, Object>();
+//            String bananas = request.queryParams("inputTeamName");
+//            Team newTeam = new Team(bananas);
+//            ArrayList<Team> currentTeams = new ArrayList<Team>();
+//            currentTeams.add(newTeam);
+//            model.put("teams", currentTeams);
+//            return new ModelAndView(model, "success.hbs");
+//        }, new HandlebarsTemplateEngine());
+//
+////        //get: show new post form
+//        get("/teams/new", (req, res) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            return new ModelAndView(model, "team-form.hbs");
+//        }, new HandlebarsTemplateEngine());
+//
+
+        //get: show individual member
+        get("/members/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfBlogToFind = Integer.parseInt(req.params("id"));
+            Member foundMember = memberDao.findById(idOfBlogToFind);
+            model.put("member", foundMember);
+            return new ModelAndView(model, "member-details.hbs");
+        }, new HandlebarsTemplateEngine());
+//
+
+        //get: delete an individual member
+        get("/cuisines/:cuisine_id/restaurants/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfRestaurantToDelete = Integer.parseInt(req.params("id")); //pull id - must match route segment
+            Restaurant deleteRestaurant = restaurantDao.findById(idOfRestaurantToDelete); //use it to find task
+            restaurantDao.deleteById(idOfRestaurantToDelete);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
 //
 //
 //        //showing all posts
