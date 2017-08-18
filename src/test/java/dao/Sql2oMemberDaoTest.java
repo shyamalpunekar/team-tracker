@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.*;
 
 /**
@@ -42,4 +43,17 @@ public class Sql2oMemberDaoTest {
         assertNotEquals(originalMemberId, member.getId());
     }
 
+    @Test
+    public void existingMemberCanBeFoundById() throws Exception {
+        Member member = setupNewMember();
+        memberDao.add(member);
+        Member foundMember = memberDao.findById(member.getId());
+        assertEquals(member, foundMember);
+    }
+
+
+
 }
+
+
+
