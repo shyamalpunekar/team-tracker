@@ -29,49 +29,49 @@ public class TeamTest {
         assertEquals("IT Crowd", testTestTeam.getTeamName());
     }
 
-    @Test
-    public void all_returnsAllInstancesOfTeam_true() {
-        Team firstTestTeam = new Team("IT Crowd");
-        Team secondTestTeam = new Team("The Guild");
-        assertEquals(true, Team.getAll().contains(firstTestTeam));
-        assertEquals(true, Team.getAll().contains(secondTestTeam));
-    }
-
-    @Test
-    public void clear_emptiesAllTeamsFromList_0() {
-        Team testTestTeam = new Team("IT Crowd");
-        Team.clearAllBlogs();
-        assertEquals(Team.getAll().size(), 0);
-    }
-
-    @Test
-    public void getId_teamsInstantiateWithAnId_1() {
-        Team.clearAllBlogs();
-        Team testTestTeam = new Team("IT Crowd");
-        assertEquals(1, testTestTeam.getId());
-    }
-
-    @Test
-    public void find_returnsTeamWithSameId_secondTeam() {
-        Team.clearAllBlogs();
-        Team firstTestTeam = new Team("IT Crowd");
-        Team secondTestTeam = new Team("The Guild");
-        assertEquals(Team.findById(secondTestTeam.getId()), secondTestTeam);
-    }
-
-    @Test
-    public void getMembers_initiallyReturnsEmptyList_ArrayList() {
-        Team.clearAllBlogs();
-        Team testTestTeam = new Team("IT Crowd");
-        //assertEquals(0, testTestTeam.getTeamName().size());
-    }
-
-    @Test
-    public void addMember_addsMemberToList_true() {
-        Team testTestTeam = new Team("IT Crowd");
-        Member newTestMember = new Member("Kattie");
-        testTestTeam.addMember(newTestMember);
-        //assertTrue(testTestTeam.getMembers().contains(newTestMember));
-    }
+//    @Test
+//    public void all_returnsAllInstancesOfTeam_true() {
+//        Team firstTestTeam = new Team("IT Crowd");
+//        Team secondTestTeam = new Team("The Guild");
+//        assertEquals(true, Team.getAll().contains(firstTestTeam));
+//        assertEquals(true, Team.getAll().contains(secondTestTeam));
+//    }
+//
+//    @Test
+//    public void clear_emptiesAllTeamsFromList_0() {
+//        Team testTestTeam = new Team("IT Crowd");
+//        Team.clearAllBlogs();
+//        assertEquals(Team.getAll().size(), 0);
+//    }
+//
+//    @Test
+//    public void getId_teamsInstantiateWithAnId_1() {
+//        Team.clearAllBlogs();
+//        Team testTestTeam = new Team("IT Crowd");
+//        assertEquals(1, testTestTeam.getId());
+//    }
+//
+//    @Test
+//    public void find_returnsTeamWithSameId_secondTeam() {
+//        Team.clearAllBlogs();
+//        Team firstTestTeam = new Team("IT Crowd");
+//        Team secondTestTeam = new Team("The Guild");
+//        assertEquals(Team.findById(secondTestTeam.getId()), secondTestTeam);
+//    }
+//
+//    @Test
+//    public void getMembers_initiallyReturnsEmptyList_ArrayList() {
+//        Team.clearAllBlogs();
+//        Team testTestTeam = new Team("IT Crowd");
+//        //assertEquals(0, testTestTeam.getTeamName().size());
+//    }
+//
+//    @Test
+//    public void addMember_addsMemberToList_true() {
+//        Team testTestTeam = new Team("IT Crowd");
+//        Member newTestMember = new Member("Kattie");
+//        testTestTeam.addMember(newTestMember);
+//        //assertTrue(testTestTeam.getMembers().contains(newTestMember));
+//    }
 
 }
