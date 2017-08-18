@@ -74,6 +74,14 @@ public class Sql2oMemberDaoTest {
         assertNotEquals(initialMemberName, updatedRestaurant.getMemberName());
     }
 
+    @Test
+    public void deleteByIdDeletesCorrectMember() throws Exception {
+        Member member = setupNewMember();
+        memberDao.add(member);
+        memberDao.deleteById(member.getId());
+        assertEquals(0, memberDao.getAll().size());
+    }
+
 
 
 
