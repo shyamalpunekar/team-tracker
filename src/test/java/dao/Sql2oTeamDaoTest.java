@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.*;
 
 /**
@@ -42,5 +43,15 @@ public class Sql2oTeamDaoTest {
         teamDao.add(team);
         assertNotEquals(originalCuisineId, team.getId()); //how does this work?
     }
+
+    @Test
+    public void existingCuisineCanBeFoundById() throws Exception {
+        Team team = setupNewTeam();
+        teamDao.add(team);
+        Team foundTeam = teamDao.findById(team.getId());
+        assertEquals(team, foundTeam);
+    }
+
+
 
 }
