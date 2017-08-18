@@ -96,7 +96,7 @@ public class Sql2oTeamDaoTest {
     }
 
     @Test
-    public void getAllRestaurantsByCuisineReturnsRestaurantsCorrectly() throws Exception {
+    public void getAllMembersByTeamReturnsMembersCorrectly() throws Exception {
         Team team = new Team ("American");
         teamDao.add(team);
         int teamId = team.getId();

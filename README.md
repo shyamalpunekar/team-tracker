@@ -9,7 +9,7 @@
 This is a program that allows a Startup Weekend organizer or hack-a-thon coordinator to track teams and their members.
 Management software with dashboard for a hypothetical Teams to allow to do the following:
 * VIEW all Teams and each Teams's member;
-* ADD a Team and add Teammember to particular Team;
+* ADD a Team and add Team member to particular Team;
 * UPDATE Team details and member details;
 * DELETE Team if no longer required and delete a member if they no longer required.
 
@@ -58,7 +58,7 @@ team-tracker
 
 You will need [gradle](https://gradle.org/gradle-download/) installed on your device.
 
-* `$ git clone https://github.com/shyamalpunekar/team-tracker.git`
+* `$ git clone https://github.com/shyamalpunekar/team-tracker-extended`
 * In PSQL:
   * CREATE DATABASE hair_salon;
   * \c hair_salon;

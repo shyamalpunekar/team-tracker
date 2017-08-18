@@ -1,5 +1,8 @@
+import dao.Sql2oMemberDao;
+import dao.Sql2oTeamDao;
 import models.Member;
 import models.Team;
+import org.sql2o.Sql2o;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -11,9 +14,31 @@ import java.util.Map;
 import static spark.Spark.*;
 
 public class App {
-//    public static void main(String[] args) {
-//        staticFileLocation("/public");
+    public static void main(String[] args) {
+        staticFileLocation("/public");
+        String connectionString = "jdbc:h2:~/todolist.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
+        Sql2o sql2o = new Sql2o(connectionString, "", "");
+        Sql2oMemberDao memberDao = new Sql2oMemberDao(sql2o);
+        Sql2oTeamDao teamDao = new Sql2oTeamDao(sql2o);
+
+        //get: show all members
+        get("/", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Team> allTeams = teamDao.getAll();
+            model.put("teams", allTeams);
+
+            List<Member> members = memberDao.getAll();
+            model.put("descriptions", members);
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());//get: delete all restaurants
 //
+
+        get("/restaurants/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            memberDao.clearAllMembers();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
 //       //Creating Objects with a POST Request
 //        post("/teams/new" , (request, response) -> {
 //            Map<String, Object> model = new HashMap<String, Object>();
@@ -152,5 +177,5 @@ public class App {
 //        }, new HandlebarsTemplateEngine());
 //
 
-   // }
+    }
 }

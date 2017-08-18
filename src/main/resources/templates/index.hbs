@@ -3,7 +3,6 @@
     <h1>Team Tracker!</h1>
 
     {{#if teams}}
-        <p><img src="/images/smile.jpeg" width="20%"></p>
         {{#each teams }} <!--loop-->
         <p>{{ teamName }}  <a href="/team/{{id}}"></a> </p> <!--show-->
         {{/each}}
