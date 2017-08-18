@@ -74,4 +74,27 @@ public class Member {
 //        this.memberName = newValue;
 //    }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Member member = (Member) o;
+
+        if (published != member.published) return false;
+        if (id != member.id) return false;
+        if (memberId != member.memberId) return false;
+        return memberName.equals(member.memberName);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = memberName.hashCode();
+        result = 31 * result + (published ? 1 : 0);
+        result = 31 * result + id;
+        result = 31 * result + memberId;
+        return result;
+    }
 }
