@@ -75,5 +75,15 @@ public class Sql2oTeamDaoTest {
         assertNotEquals(initialTeamName, updatedCuisine.getTeamName());
     }
 
+    @Test
+    public void deleteByIdDeletesCorrectCuisine() throws Exception {
+        Team cuisine = setupNewTeam();
+        teamDao.add(cuisine);
+        teamDao.deleteTeamById(cuisine.getId());
+        assertEquals(0, teamDao.getAll().size());
+    }
+
+
+
 
 }
