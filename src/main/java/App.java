@@ -33,11 +33,15 @@ public class App {
         }, new HandlebarsTemplateEngine());//get: delete all restaurants
 //
 
+
         get("/restaurants/delete", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             memberDao.clearAllMembers();
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
+
+
+
 
 //       //Creating Objects with a POST Request
 //        post("/teams/new" , (request, response) -> {
