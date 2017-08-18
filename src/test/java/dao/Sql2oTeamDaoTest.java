@@ -59,7 +59,21 @@ public class Sql2oTeamDaoTest {
         assertEquals(1, teamDao.getAll().size());
     }
 
+    @Test
+    public void noTeamsReturnsEmptyList() throws Exception {
+        assertEquals(0, teamDao.getAll().size());
+    }
 
+    @Test
+    public void updateChangesTeamContent() throws Exception {
+        String initialTeamName = "American";
+        Team team = new Team(initialTeamName);
+        teamDao.add(team);
+
+        teamDao.update(team.getId(), "American-Warrier");
+        Team updatedCuisine = teamDao.findById(team.getId());
+        assertNotEquals(initialTeamName, updatedCuisine.getTeamName());
+    }
 
 
 }
