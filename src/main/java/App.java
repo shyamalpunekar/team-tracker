@@ -34,12 +34,20 @@ public class App {
 //
 
 
-        get("/restaurants/delete", (req, res) -> {
+        get("/members/delete", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             memberDao.clearAllMembers();
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
+
+        //  get: show new form for members
+        get("/members/new", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Team> allTeams = teamDao.getAll();
+            model.put("teams", allTeams);
+           return new ModelAndView(model, "member-form.hbs");
+        }, new HandlebarsTemplateEngine());
 
 
 
@@ -89,12 +97,7 @@ public class App {
 //            return new ModelAndView(model, "member-success.hbs");
 //        }, new HandlebarsTemplateEngine());
 //
-//      //  get: show new post form for members
-//        get("/members/new", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            model.put("teams", Team.getAll());
-//           return new ModelAndView(model, "member-form.hbs");
-//        }, new HandlebarsTemplateEngine());
+//
 //
 //        //showing all posts
 //        get("/" , (request, response) -> {
