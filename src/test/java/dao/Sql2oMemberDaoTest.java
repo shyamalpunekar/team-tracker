@@ -70,8 +70,8 @@ public class Sql2oMemberDaoTest {
         memberDao.add(member);
 
         memberDao.update(member.getId(), "test", 1);
-        Member updatedRestaurant = memberDao.findById(member.getId());
-        assertNotEquals(initialMemberName, updatedRestaurant.getMemberName());
+        Member updatedMember = memberDao.findById(member.getId());
+        assertNotEquals(initialMemberName, updatedMember.getMemberName());
     }
 
     @Test
@@ -84,23 +84,22 @@ public class Sql2oMemberDaoTest {
 
     @Test
     public void clearAllClearsAll() throws Exception {
-        Member restaurant = setupNewMember();
-        Member restaurant2 = setupNewMemberTwo();
-        memberDao.add(restaurant);
-        memberDao.add(restaurant2);
+        Member member = setupNewMember();
+        Member memberTwo = setupNewMemberTwo();
+        memberDao.add(member);
+        memberDao.add(memberTwo);
         int daoSize = memberDao.getAll().size();
         memberDao.clearAllMembers();
         assertTrue(daoSize > 0 && daoSize > memberDao.getAll().size());
     }
 
     @Test
-    public void categoryIdIsReturnedCorrectly() throws Exception {
+    public void memberIdIsReturnedCorrectly() throws Exception {
         Member member = setupNewMember();
-        int originalCuisineId = member.getMemberId();
+        int originalMemberId = member.getMemberId();
         memberDao.add(member);
-        assertEquals(originalCuisineId, memberDao.findById(member.getId()).getMemberId());
+        assertEquals(originalMemberId, memberDao.findById(member.getId()).getMemberId());
     }
-
 
 }
 

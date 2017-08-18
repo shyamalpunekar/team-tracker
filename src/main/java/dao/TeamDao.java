@@ -11,21 +11,21 @@ import java.util.List;
 public interface TeamDao {
     //create -------------
     void add (Team team);
-    List<Member> getAllRestaurantsByTeam(int memberId);
+   // List<Member> getAllMembersByTeam(int memberId);
 
     //read -------------
-    List<Team> getAll();
+   // List<Team> getAll();
     //
-    Team findById(int id);
+  //  Team findById(int id);
     //
 //
     //update -------------
-    void update(int id, String teamName);
+   // void update(int id, String teamName);
     //
 //
     //delete -------------
-    void deleteTeamById(int id);
+  //  void deleteTeamById(int id);
     //
-    void clearAllTeams();
+   // void clearAllTeams();
 
 }
