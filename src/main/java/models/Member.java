@@ -11,60 +11,67 @@ import java.util.Map;
  */
 public class Member {
     private String memberName;
-    private static ArrayList<Member> instances = new ArrayList<Member>();
-    private static Map<String, List<String>> teamMembers = new HashMap<>();
+    private boolean published;
+    private LocalDateTime createdAt;
+    private int id;
+    private int memberId;
+   // private static ArrayList<Member> instances = new ArrayList<Member>();
+    //private static Map<String, List<String>> teamMembers = new HashMap<>();
+
+
+    public Member(String memberName, int memberId) {
+        this.memberName = memberName;
+        this.memberId = memberId;
+        //instances.add(this);
+        this.published = false;
+        this.createdAt = LocalDateTime.now();
+        //memberId = instances.size();
+    }
+
 
     public String getMemberName() {
         return memberName;
     }
 
-    private boolean published;
+    public void setMemberName(String memberName) {this.memberName = memberName;}
 
+//    public static ArrayList<Member> getAll() {
+//        return instances;
+//    }
 
-    private LocalDateTime createdAt;
-
-    private int id;
-
-    public Member(String memberName) {
-        this.memberName = memberName;
-        instances.add(this);
-        this.published = false;
-        this.createdAt = LocalDateTime.now();
-        id = instances.size();
-    }
-
-
-
-    public static ArrayList<Member> getAll() {
-        return instances;
-    }
-
-    public static void clearMember() {
-        instances.clear();
-    }
+//    public static void clearMember() {
+//        instances.clear();
+//    }
 
     public Member(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
     public boolean isPublished() {  return published; }
 
-    public int getId() {
-        return id;
+    public int getMemberId() {
+        return memberId;
     }
 
-    public static Member findById(int id) {
-            return instances.get(id - 1);
-    }
+    public void setMemberId(int memberId) { this.memberId = memberId; }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
+
+    //    public static Member findById(int id) {
+//            return instances.get(id - 1);
+//    }
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
     //Displaying Custom Objects
-    public static Map<String, List<String>> getTeamMembers(){
-        return teamMembers;
-    }
+//    public static Map<String, List<String>> getTeamMembers()
+//    {
+//        return teamMembers;
+//    }
 
-    public void update(String newValue) {
-        this.memberName = newValue;
-    }
+//    public void update(String newValue) {
+//        this.memberName = newValue;
+//    }
 
 }
