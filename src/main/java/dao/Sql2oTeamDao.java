@@ -5,6 +5,8 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
+import java.util.List;
+
 /**
  * Created by spunek on 8/18/17.
  */
@@ -39,8 +41,16 @@ public class Sql2oTeamDao implements TeamDao{
                     .addParameter("id", id)
                     .executeAndFetchFirst(Team.class);
         }
-
     }
+
+    @Override
+    public List<Team> getAll() {
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM teams")
+                    .executeAndFetch(Team.class);
+        }
+    }
+
 
 
 

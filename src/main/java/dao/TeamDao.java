@@ -14,7 +14,7 @@ public interface TeamDao {
    // List<Member> getAllMembersByTeam(int memberId);
 
     //read -------------
-   // List<Team> getAll();
+    List<Team> getAll();
     //
     Team findById(int id);
     //
