@@ -30,7 +30,7 @@ public class App {
             List<Member> members = memberDao.getAll();
             model.put("descriptions", members);
             return new ModelAndView(model, "index.hbs");
-        }, new HandlebarsTemplateEngine());//get: delete all restaurants
+        }, new HandlebarsTemplateEngine());
 //
 
 
@@ -161,6 +161,46 @@ public class App {
             return new ModelAndView(model, "member-success.hbs");
         },new HandlebarsTemplateEngine());
 
+        //showing all posts
+        get("/" , (request, response) -> {
+            Map<String , Object> model =  new HashMap<String, Object>();
+            List<Team> teams = teamDao.getAll();
+            model.put("teams", teams);
+            List<Member> mydef = memberDao.getAll();
+            model.put("descriptions", mydef);
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        //get: show a form to update a post
+        get("/teams/:id/update" , (request, response) -> {
+        Map<String, Object> model = new HashMap<>();
+        int idOfMemberToEdit = Integer.parseInt(request.params("id"));
+            model.put("teams", true);
+            List<Team> allTeams = teamDao.getAll();
+            model.put("teams", allTeams);
+        return new ModelAndView(model, "team-form.hbs");
+        },new HandlebarsTemplateEngine());
+//
+//        //post : process a form to updates in post
+        post("/teams: id/update" , (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String newTeamName = request.queryParams("inputTeamName");
+            int idOfTeamToEdit = Integer.parseInt(request.params("id"));
+            Team editTeam = teamDao.findById(idOfTeamToEdit);
+            teamDao.update(editTeam.getId(), newTeamName );
+            List<Team> allTeams = teamDao.getAll();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //get: delete an individual cuisine which id?
+        get("/teams/:cuisine_id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfTeamToDelete = Integer.parseInt(req.params(""));
+            Team deleteTeam = teamDao.findById(idOfTeamToDelete);
+            teamDao.deleteTeamById(idOfTeamToDelete);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
 
 //        //showing all posts
 //        get("/" , (request, response) -> {
