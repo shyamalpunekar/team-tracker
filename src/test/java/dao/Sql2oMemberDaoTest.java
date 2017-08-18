@@ -63,6 +63,19 @@ public class Sql2oMemberDaoTest {
         assertEquals(0, memberDao.getAll().size());
     }
 
+    @Test
+    public void updateChangesMemberContent() throws Exception {
+        String initialMemberName = "Jenny";
+        Member member = new Member(initialMemberName, 1);
+        memberDao.add(member);
+
+        memberDao.update(member.getId(), "test", 1);
+        Member updatedRestaurant = memberDao.findById(member.getId());
+        assertNotEquals(initialMemberName, updatedRestaurant.getMemberName());
+    }
+
+
+
 
 
 
