@@ -1,5 +1,6 @@
 package dao;
 
+import models.Member;
 import models.Team;
 import org.junit.After;
 import org.junit.Before;
@@ -77,10 +78,39 @@ public class Sql2oTeamDaoTest {
 
     @Test
     public void deleteByIdDeletesCorrectCuisine() throws Exception {
-        Team cuisine = setupNewTeam();
-        teamDao.add(cuisine);
-        teamDao.deleteTeamById(cuisine.getId());
+        Team team = setupNewTeam();
+        teamDao.add(team);
+        teamDao.deleteTeamById(team.getId());
         assertEquals(0, teamDao.getAll().size());
+    }
+
+    @Test
+    public void clearAllClearsAll() throws Exception {
+        Team team = setupNewTeam();
+        Team teamTwo = setupNewTeamTwo();
+        teamDao.add(team);
+        teamDao.add(teamTwo);
+        int daoSize = teamDao.getAll().size();
+        teamDao.clearAllTeams();
+        assertTrue(daoSize > 0 && daoSize > teamDao.getAll().size());
+    }
+
+    @Test
+    public void getAllRestaurantsByCuisineReturnsRestaurantsCorrectly() throws Exception {
+        Team team = new Team ("American");
+        teamDao.add(team);
+        int teamId = team.getId();
+        Member newMember = new Member("American-Warrier", teamId);
+        Member newMemberTwo = new Member("Management-Team", teamId);
+        Member newMemberThree = new Member("Sports-Team", teamId);
+        memberDao.add(newMember);
+        memberDao.add(newMemberTwo);
+
+
+        assertTrue(teamDao.getAllMembersByTeam(teamId).size() == 2);
+        assertTrue(teamDao.getAllMembersByTeam(teamId).contains(newMember));
+        assertTrue(teamDao.getAllMembersByTeam(teamId).contains(newMemberTwo));
+        assertFalse(teamDao.getAllMembersByTeam(teamId).contains(newMemberThree));
     }
 
 

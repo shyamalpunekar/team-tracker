@@ -1,5 +1,6 @@
 package dao;
 
+import models.Member;
 import models.Team;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -76,6 +77,26 @@ public class Sql2oTeamDao implements TeamDao{
         }
     }
 
+
+    @Override
+    public void clearAllTeams() {
+        String sql = "DELETE from teams";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
+
+    @Override
+    public List<Member> getAllMembersByTeam(int memberId) {
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM members WHERE memberId = :memberId")
+                    .addParameter("memberId", memberId)
+                    .executeAndFetch(Member.class);
+        }
+    }
 
 
 
