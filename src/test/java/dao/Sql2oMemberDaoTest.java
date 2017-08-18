@@ -93,7 +93,13 @@ public class Sql2oMemberDaoTest {
         assertTrue(daoSize > 0 && daoSize > memberDao.getAll().size());
     }
 
-
+    @Test
+    public void categoryIdIsReturnedCorrectly() throws Exception {
+        Member member = setupNewMember();
+        int originalCuisineId = member.getMemberId();
+        memberDao.add(member);
+        assertEquals(originalCuisineId, memberDao.findById(member.getId()).getMemberId());
+    }
 
 
 }
