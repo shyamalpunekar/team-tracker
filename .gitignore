@@ -36,9 +36,16 @@ Thumbs.db
 ############
 build/
 .gradle/
-Gradlew
-Gradlew.bat
+gradle/
+gradlew*
 settings.gradle
 
+# IntelliJ #
+############
+.idea
 .idea/
-gradlew*
+
+# SQL Code #
+############
+.sql
+.sql/

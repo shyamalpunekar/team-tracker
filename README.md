@@ -1,12 +1,17 @@
 # Team Tracker
 
-#### _A Team Tracker Web Application for Epicodus Java Week 2 Independent Project, Aug 11, 2017_
+#### _A Team Tracker extended Web Application for Epicodus Java Week 2 Independent Project, Aug 18, 2017_
 
 #### By _**Shyamal Punekar**_
 
 ## Description
 
 This is a program that allows a Startup Weekend organizer or hack-a-thon coordinator to track teams and their members.
+Management software with dashboard for a hypothetical Teams to allow to do the following:
+* VIEW all Teams and each Teams's member;
+* ADD a Team and add Teammember to particular Team;
+* UPDATE Team details and member details;
+* DELETE Team if no longer required and delete a member if they no longer required.
 
 ## Specifications
 
@@ -54,8 +59,14 @@ team-tracker
 You will need [gradle](https://gradle.org/gradle-download/) installed on your device.
 
 * `$ git clone https://github.com/shyamalpunekar/team-tracker.git`
-* `$ gradle run`
+* In PSQL:
+  * CREATE DATABASE hair_salon;
+  * \c hair_salon;
+  * CREATE TABLE stylists (id serial PRIMARY KEY, name varchar, hire_date varchar, base_salary varchar, work_schedule varchar);
+  * CREATE TABLE clients (id serial PRIMARY KEY, name varchar, appt_date varchar, cut_request varchar, stylist_id int);
+* _In the cloned repository root directory, run the command 'gradle run'
 * Navigate to `localhost:4567` in a web browser of your choice.
+
 
 ## Support and contact details
 
@@ -68,6 +79,9 @@ Please feel free to contact shyamal.punekar@gmail.com if you have any questions,
 * Gradle
 * html/css
 * spark
+* Javascript
+* handlebars
+* postgres
 
 ### License
 
