@@ -18,7 +18,7 @@ public interface MemberDao {
 
 
     //update -------------
-   void update(int id, String memberName, int memberId);
+   void update(int id, String memberName, String teamName);
 
 
     //delete -------------

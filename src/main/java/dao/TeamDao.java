@@ -20,7 +20,7 @@ public interface TeamDao {
     //
 //
     //update -------------
-    void update(int id, String teamName);
+    void update(int id, String teamName, String memberName);
     //
 //
     //delete -------------

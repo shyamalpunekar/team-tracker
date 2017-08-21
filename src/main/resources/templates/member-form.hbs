@@ -1,6 +1,22 @@
 
 {{#partial "content"}}
-
+    {{#if members}}
+        <h1>Edit Member Name!</h1>
+        <form action="/members/update" method="post">
+            <p>
+                <label>Team:</label>
+                <select id= teamName name="teamName">
+                    {{#each teams }}
+                        <option value="{{teamName}}" {{#selected}}selected="selected"{{/selected}}>{{ teamName }}</option>
+                    {{/each}}
+                </select>
+            </p>
+            <label for="inputTeamName">Edit Member Name</label>
+            <input id="inputMember" value="{{memberName}}" name="inputMember" type="text">
+            <input id="hiddenMemberId" name = "hiddenMemberId" value="{{hiddenMemberId}}" type="hidden">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    {{else}}
 
         <h1>Add a Member!</h1>
 
@@ -15,7 +31,9 @@
             </p>
             <label for="inputMember">Enter Member Name</label>
             <input id="inputMember" name="inputMember" type="text">
-        <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+    {{/if}}
+
     </form>
 {{/partial}}
 

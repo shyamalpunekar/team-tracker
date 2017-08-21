@@ -25,7 +25,7 @@ public class Sql2oMemberDao implements MemberDao {
             int id = (int) con.createQuery(sql)
                     .addParameter("memberName", member.getMemberName())
                     .addParameter("teamName", member.getTeamName())
-                    .addParameter("createdAt", member.getCreatedAt())
+                    .addParameter("createdAt", member.getCreatedAt().toString())
                     .addColumnMapping("MEMBERNAME", "memberName")
                     .addColumnMapping("MEMBERID", "memberId")
                     .executeUpdate()
@@ -56,11 +56,12 @@ public class Sql2oMemberDao implements MemberDao {
     }
 
     @Override
-    public void update(int id, String newMemberName, int newMemberId){
-        String sql = "UPDATE members SET (memberName) = (:memberName) WHERE id = :id";
+    public void update(int id, String newMemberName, String teamName){
+        String sql = "UPDATE members SET (memberName, teamName) = (:memberName, :teamName) WHERE id = :id";
         try(Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("memberName", newMemberName)
+                    .addParameter("teamName", teamName)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex){

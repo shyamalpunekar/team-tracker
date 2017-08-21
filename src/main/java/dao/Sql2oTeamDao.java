@@ -26,7 +26,7 @@ public class Sql2oTeamDao implements TeamDao{
         try(Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
                     .addParameter("teamName", team.getTeamName())
-                    .addParameter("createdAt", team.getCreatedAt())
+                    .addParameter("createdAt", team.getCreatedAt().toString())
 
                     .executeUpdate()
                     .getKey();
@@ -54,8 +54,8 @@ public class Sql2oTeamDao implements TeamDao{
     }
 
     @Override
-    public void update(int id, String newTeamName){
-        String sql = "UPDATE teams SET (teamName) = (:teamName) WHERE id = :id";
+    public void update(int id, String newTeamName, String memberName){
+        String sql = "UPDATE teams SET (teamName, memberName) = (:teamName, :memberName) WHERE id = :id";
         try(Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("teamName", newTeamName)
