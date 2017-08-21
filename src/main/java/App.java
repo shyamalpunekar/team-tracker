@@ -273,13 +273,13 @@ public class App {
 //        }, new HandlebarsTemplateEngine());
 //
 //        //get: show individual post
-//        get("/teams/:id", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            int idOfBlogToFind = Integer.parseInt(req.params("id")); //pull id - must match route segment
-//            Team foundBlog = Team.findById(idOfBlogToFind); //use it to find post
-//            model.put("team", foundBlog); //add it to model for template to display
-//            return new ModelAndView(model, "team-detail.hbs"); //individual post page.
-//        }, new HandlebarsTemplateEngine());
+        get("/teams/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfBlogToFind = Integer.parseInt(req.params("id"));
+            Team foundBlog = teamDao.findById(idOfBlogToFind);
+            model.put("team", foundBlog);
+            return new ModelAndView(model, "team-detail.hbs");
+        }, new HandlebarsTemplateEngine());
 //
 //        //get: show a form to update a post
 //        get("/teams/:id/update" , (request, response) -> {
