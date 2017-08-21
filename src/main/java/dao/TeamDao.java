@@ -11,7 +11,7 @@ import java.util.List;
 public interface TeamDao {
     //create -------------
     void add (Team team);
-    List<Member> getAllMembersByTeam(int memberId);
+    List<Member> getTeamByName(String teamName);
 
     //read -------------
     List<Team> getAll();

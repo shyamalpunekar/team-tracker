@@ -100,17 +100,17 @@ public class Sql2oTeamDaoTest {
         Team team = new Team ("American");
         teamDao.add(team);
         int teamId = team.getId();
-        Member newMember = new Member("American-Warrier", teamId);
-        Member newMemberTwo = new Member("Management-Team", teamId);
-        Member newMemberThree = new Member("Sports-Team", teamId);
+        Member newMember = new Member("American-Warrier", teamId, "Rock");
+        Member newMemberTwo = new Member("Management-Team", teamId, "Rock");
+        Member newMemberThree = new Member("Sports-Team", teamId, "Rock");
         memberDao.add(newMember);
         memberDao.add(newMemberTwo);
 
 
-        assertTrue(teamDao.getAllMembersByTeam(teamId).size() == 2);
-        assertTrue(teamDao.getAllMembersByTeam(teamId).contains(newMember));
-        assertTrue(teamDao.getAllMembersByTeam(teamId).contains(newMemberTwo));
-        assertFalse(teamDao.getAllMembersByTeam(teamId).contains(newMemberThree));
+        assertTrue(teamDao.getTeamByName("Rock").size() == 2);
+        assertTrue(teamDao.getTeamByName("Rock").contains(newMember));
+        assertTrue(teamDao.getTeamByName("Rock").contains(newMemberTwo));
+        assertFalse(teamDao.getTeamByName("Rock").contains(newMemberThree));
     }
 
 

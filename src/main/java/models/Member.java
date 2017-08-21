@@ -6,34 +6,34 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by ssaxe1 on 8/11/17.
- */
+
 public class Member {
     private String memberName;
     private boolean published;
     private LocalDateTime createdAt;
     private int id;
     private int memberId;
+
+
+
+    private String teamName;
    // private static ArrayList<Member> instances = new ArrayList<Member>();
-    //private static Map<String, List<String>> teamMembers = new HashMap<>();
+    private static Map<String, List<String>> teamMembers = new HashMap<>();
 
 
-    public Member(String memberName, int memberId) {
+
+
+    public Member(String memberName, String teamName) {
         this.memberName = memberName;
         this.memberId = memberId;
         //instances.add(this);
         this.published = false;
         this.createdAt = LocalDateTime.now();
+        this.teamName = teamName;
         //memberId = instances.size();
     }
 
 
-    public String getMemberName() {
-        return memberName;
-    }
-
-    public void setMemberName(String memberName) {this.memberName = memberName;}
 
 //    public static ArrayList<Member> getAll() {
 //        return instances;
@@ -64,11 +64,27 @@ public class Member {
         return createdAt;
     }
 
+    public String getMemberName() {
+        return memberName;
+    }
+
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
+    }
+
     //Displaying Custom Objects
-//    public static Map<String, List<String>> getTeamMembers()
-//    {
-//        return teamMembers;
-//    }
+    public static Map<String, List<String>> getTeamMembers()
+    {
+        return teamMembers;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
 
 //    public void update(String newValue) {
 //        this.memberName = newValue;

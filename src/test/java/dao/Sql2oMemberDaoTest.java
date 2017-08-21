@@ -2,6 +2,7 @@ package dao;
 
 import models.Member;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.sql2o.Connection;
@@ -28,11 +29,12 @@ public class Sql2oMemberDaoTest {
     }
     @After
     public void tearDown() throws Exception {
+        if (conn != null)
         conn.close();
     }
 
-    public Member setupNewMember() { return new Member("Rick",  1);}
-    public Member setupNewMemberTwo() { return new Member("Marty", 2);}
+    public Member setupNewMember() { return new Member("Rick",  1, "Rock");}
+    public Member setupNewMemberTwo() { return new Member("Marty", 2, "Rock");}
 
 
     @Test
@@ -66,7 +68,7 @@ public class Sql2oMemberDaoTest {
     @Test
     public void updateChangesMemberContent() throws Exception {
         String initialMemberName = "Jenny";
-        Member member = new Member(initialMemberName, 1);
+        Member member = new Member(initialMemberName, 1, "Rock");
         memberDao.add(member);
 
         memberDao.update(member.getId(), "test", 1);

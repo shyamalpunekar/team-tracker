@@ -22,11 +22,12 @@ public class Sql2oTeamDao implements TeamDao{
 
     @Override
     public void add(Team team) {
-        String sql = "INSERT INTO teams (teamName) VALUES (:teamName)";
+        String sql = "INSERT INTO teams (teamName, createdAt) VALUES (:teamName, :createdAt)";
         try(Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
                     .addParameter("teamName", team.getTeamName())
-                    .addColumnMapping("TEAMNAME", "teamName")
+                    .addParameter("createdAt", team.getCreatedAt())
+
                     .executeUpdate()
                     .getKey();
             team.setId(id);
@@ -90,10 +91,10 @@ public class Sql2oTeamDao implements TeamDao{
     }
 
     @Override
-    public List<Member> getAllMembersByTeam(int memberId) {
+    public List<Member> getTeamByName(String  teamName) {
         try (Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM members WHERE memberId = :memberId")
-                    .addParameter("memberId", memberId)
+            return con.createQuery("SELECT id FROM teams WHERE teamName = :teamName")
+                    .addParameter("teamName", teamName)
                     .executeAndFetch(Member.class);
         }
     }
