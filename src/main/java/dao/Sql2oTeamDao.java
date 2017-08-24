@@ -54,11 +54,12 @@ public class Sql2oTeamDao implements TeamDao{
     }
 
     @Override
-    public void update(int id, String newTeamName, String memberName){
-        String sql = "UPDATE teams SET (teamName, memberName) = (:teamName, :memberName) WHERE id = :id";
+    public void update(int id, String newTeamName){
+        String sql = "UPDATE teams SET (teamName) = (:teamName) WHERE id = :id";
         try(Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("teamName", newTeamName)
+
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex){
@@ -91,11 +92,12 @@ public class Sql2oTeamDao implements TeamDao{
     }
 
     @Override
-    public List<Member> getTeamByName(String  teamName) {
+    public int getTeamByName(String  teamName) {
         try (Connection con = sql2o.open()) {
             return con.createQuery("SELECT id FROM teams WHERE teamName = :teamName")
                     .addParameter("teamName", teamName)
-                    .executeAndFetch(Member.class);
+                    .executeAndFetch(Team.class)
+                    .get(0).getId();
         }
     }
 

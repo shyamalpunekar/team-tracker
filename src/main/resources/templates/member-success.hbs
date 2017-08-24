@@ -1,13 +1,18 @@
 {{#partial "content"}}
 
-    <h1>Registration Confirmed. New member has been added to team!</h1>
 
+    {{#if deleteAllMembers}}
+        <h1>All the members are deleted successfully!</h1>
+    {{else}}
+        <h1>Registration Confirmed. New member has been added to team!</h1>
 
         {{#each descriptions }} <!--loop-->
         <h3><p>Team Name : {{ teamName }}</p></h3>
         <p> Member Name: {{ memberName }}  <a href="/members/{{id}}"> read more... </a> </p> <!--show-->
         <p> Created At: {{ createdAt }}</p> <!--show-->
         {{/each}}
+
+    {{/if}}
 
 
 

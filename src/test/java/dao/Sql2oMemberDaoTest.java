@@ -33,8 +33,8 @@ public class Sql2oMemberDaoTest {
         conn.close();
     }
 
-    public Member setupNewMember() { return new Member("Rick",  1, "Rock");}
-    public Member setupNewMemberTwo() { return new Member("Marty", 2, "Rock");}
+    public Member setupNewMember() { return new Member("Rick",  "Rock");}
+    public Member setupNewMemberTwo() { return new Member("Marty", "Rock");}
 
 
     @Test
@@ -68,10 +68,10 @@ public class Sql2oMemberDaoTest {
     @Test
     public void updateChangesMemberContent() throws Exception {
         String initialMemberName = "Jenny";
-        Member member = new Member(initialMemberName, 1, "Rock");
+        Member member = new Member(initialMemberName, "Rock");
         memberDao.add(member);
 
-        memberDao.update(member.getId(), "test", 1);
+        memberDao.update(member.getId(), "test", "Rickie");
         Member updatedMember = memberDao.findById(member.getId());
         assertNotEquals(initialMemberName, updatedMember.getMemberName());
     }

@@ -34,7 +34,7 @@ public class Sql2oTeamDaoTest {
         conn.close();
     }
 
-    public Team setupNewTeam() { return new Team("ROCK");}
+    public Team setupNewTeam() { return new Team("Rock");}
     public Team setupNewTeamTwo() { return new Team("IT-RAW");}
 
     @Test
@@ -71,7 +71,7 @@ public class Sql2oTeamDaoTest {
         Team team = new Team(initialTeamName);
         teamDao.add(team);
 
-        teamDao.update(team.getId(), "American-Warrier");
+        teamDao.update(team.getId(), "test");
         Team updatedCuisine = teamDao.findById(team.getId());
         assertNotEquals(initialTeamName, updatedCuisine.getTeamName());
     }
@@ -96,23 +96,14 @@ public class Sql2oTeamDaoTest {
     }
 
     @Test
-    public void getAllMembersByTeamReturnsMembersCorrectly() throws Exception {
-        Team team = new Team ("American");
+    public void getTeamIdByName() throws Exception {
+        Team team = new Team("American");
         teamDao.add(team);
         int teamId = team.getId();
-        Member newMember = new Member("American-Warrier", teamId, "Rock");
-        Member newMemberTwo = new Member("Management-Team", teamId, "Rock");
-        Member newMemberThree = new Member("Sports-Team", teamId, "Rock");
-        memberDao.add(newMember);
-        memberDao.add(newMemberTwo);
+        assertTrue(teamDao.getTeamByName("American") == teamId);
 
 
-        assertTrue(teamDao.getTeamByName("Rock").size() == 2);
-        assertTrue(teamDao.getTeamByName("Rock").contains(newMember));
-        assertTrue(teamDao.getTeamByName("Rock").contains(newMemberTwo));
-        assertFalse(teamDao.getTeamByName("Rock").contains(newMemberThree));
     }
-
 
 
 

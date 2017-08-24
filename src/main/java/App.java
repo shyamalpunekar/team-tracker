@@ -37,6 +37,7 @@ public class App {
         get("/members/delete", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             memberDao.clearAllMembers();
+            model.put("deleteAllMembers", true);
             return new ModelAndView(model, "member-success.hbs");
         }, new HandlebarsTemplateEngine());
 

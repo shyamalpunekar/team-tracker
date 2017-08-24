@@ -11,7 +11,7 @@ import java.util.List;
 public interface TeamDao {
     //create -------------
     void add (Team team);
-    List<Member> getTeamByName(String teamName);
+    int  getTeamByName(String teamName);
 
     //read -------------
     List<Team> getAll();
@@ -20,7 +20,7 @@ public interface TeamDao {
     //
 //
     //update -------------
-    void update(int id, String teamName, String memberName);
+    void update(int id, String teamName);
     //
 //
     //delete -------------
