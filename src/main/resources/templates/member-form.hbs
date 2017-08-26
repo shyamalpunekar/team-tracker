@@ -2,7 +2,7 @@
 {{#partial "content"}}
     {{#if members}}
         <h1>Edit Member Name!</h1>
-        <form action="/members/update" method="post">
+        <form action="/members/{{hiddenMemberId}}/update" method="post">
             <p>
                 <label>Team:</label>
                 <select id= teamName name="teamName">

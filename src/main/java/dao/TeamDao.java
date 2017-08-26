@@ -28,4 +28,6 @@ public interface TeamDao {
     //
     void clearAllTeams();
 
+    void deleteAllMembersByTeam(int id);
+
 }

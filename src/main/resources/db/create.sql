@@ -5,7 +5,7 @@ SET MODE PostgreSQL;
 CREATE TABLE IF NOT EXISTS members (
   id int PRIMARY KEY auto_increment,
   memberName VARCHAR,
-  teamName VARCHAR,
+  teamId INTEGER,
   createdAt VARCHAR
   );
 

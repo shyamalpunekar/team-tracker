@@ -16,32 +16,32 @@ public class Member {
 
 
 
-    private String teamName;
+    private int teamId;
    // private static ArrayList<Member> instances = new ArrayList<Member>();
     private static Map<String, List<String>> teamMembers = new HashMap<>();
 
 
 
 
-    public Member(String memberName, String teamName) {
+    public Member(String memberName, int teamId) {
         this.memberName = memberName;
         this.memberId = memberId;
         //instances.add(this);
         this.published = false;
         this.createdAt = LocalDateTime.now();
-        this.teamName = teamName;
+        this.teamId = teamId;
         //memberId = instances.size();
     }
 
 
 
-//    public static ArrayList<Member> getAll() {
-//        return instances;
-//    }
+    public int getTeamId() {
+        return teamId;
+    }
 
-//    public static void clearMember() {
-//        instances.clear();
-//    }
+    public void setTeamId(int teamId) {
+        this.teamId = teamId;
+    }
 
     public Member(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
@@ -78,17 +78,7 @@ public class Member {
         return teamMembers;
     }
 
-    public String getTeamName() {
-        return teamName;
-    }
 
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }
-
-//    public void update(String newValue) {
-//        this.memberName = newValue;
-//    }
 
 
     @Override
